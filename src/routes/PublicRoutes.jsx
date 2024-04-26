@@ -6,6 +6,8 @@ import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import AllSpots from "../pages/Home/AllSpots";
+import AddSpots from "../pages/Home/AddSpots";
 
 
   const router = createBrowserRouter([
@@ -20,7 +22,11 @@ import Register from "../pages/Register/Register";
             },
             {
                 path:'/allSpots',
-                element: <Home></Home>,
+                element: <AllSpots></AllSpots>,
+            },
+            {
+                path:'/addSpots',
+                element: <AddSpots></AddSpots>,
             },
             
             {
