@@ -6,13 +6,13 @@ const getStoredValue = () =>{
     return [];
 }
 
-const setStorage = bookId =>{
+const setStorage = spotId =>{
     const storedData = getStoredValue();
 
-    const valueExists = storedData.find(data => data === bookId);
+    const valueExists = storedData.find(data => data === spotId);
 
     if(!valueExists){
-        storedData.push(bookId);
+        storedData.push(spotId);
 
         localStorage.setItem('books', JSON.stringify(storedData))
     }

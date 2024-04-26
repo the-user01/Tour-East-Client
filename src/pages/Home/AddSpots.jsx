@@ -1,6 +1,8 @@
-import { Input} from "@material-tailwind/react";
+import { Typewriter } from 'react-simple-typewriter'
 
 const AddSpots = () => {
+
+    const typeWriterArray = ["Place You visited", "Place You want to visit", "Place You recommened to visit"];
 
     const handleAddSpots = e => {
         e.preventDefault();
@@ -16,69 +18,120 @@ const AddSpots = () => {
         const total_visitor = form.total_visitor.value;
         const photo = form.photo.value;
 
-        const tour_spot = {spot_name, country_name, location, average_cost, seasonality, travel_time, description, total_visitor, photo};
+        const tour_spot = { spot_name, country_name, location, average_cost, seasonality, travel_time, description, total_visitor, photo };
 
         console.log(tour_spot);
-
-        
 
 
 
     }
 
     return (
-        <div className="p-24">
-            <h2 className="text-xl md:text-3xl font-extrabold">Add Tourist Spot</h2>
+        <div className="bg-gray-100 mt-6 p-24">
+            <div className='flex items-center gap-8'>
+                <div>
+                    <h2 className="w-44 lg:w-64 text-center text-xl md:text-3xl font-extrabold text-blue-950">Add Tourist Spot</h2>
+
+                </div>
+                <div className="text-sm md:text-lg font-bold text-green-600 w-28 md:w-72 h-5">
+                    <Typewriter words={typeWriterArray} loop={true} cursor={true}/>
+                </div>
+            </div>
 
             <form className="space-y-4 mt-6" onSubmit={handleAddSpots}>
                 {/* Form Row */}
                 <div className="md:flex space-y-4 md:space-y-0">
                     <div className="form-control md:w-1/2">
-                        <Input label="Spot Name" name="spot_name"/>
+                        <label className="label">
+                            <span className="label-text text-base">Spot Name</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="spot_name" placeholder="Spot Name" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
 
                     <div className=" md:w-1/2 md:ml-4">
-                        <Input label="Country Name" name="country_name"/>
+                        <label className="label">
+                            <span className="label-text text-base">Country Name</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="country_name" placeholder="Country Name" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
                 </div>
 
                 {/* Form Row */}
                 <div className="md:flex space-y-4 md:space-y-0">
                     <div className="form-control md:w-1/2">
-                        <Input label="Location" name="location" />
+                        <label className="label">
+                            <span className="label-text text-base">Location</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="location" placeholder="Location" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
 
                     <div className="form-control md:w-1/2 md:ml-4">
-                        <Input label="Average Cost" name="average_cost" />
+                        <label className="label">
+                            <span className="label-text text-base">Average Cost</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="average_cost" placeholder="Average Cost" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
                 </div>
 
                 {/* Form Row */}
                 <div className="md:flex space-y-4 md:space-y-0">
                     <div className="form-control md:w-1/2">
-                        <Input label="Seasonality" name="seasonality" />
+                        <label className="label">
+                            <span className="label-text text-base">Seasonality</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="seasonality" placeholder="Seasonality" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
 
                     <div className="form-control md:w-1/2 md:ml-4">
-                        <Input label="Travel Time" name="travel_time" />
+                        <label className="label">
+                            <span className="label-text text-base">Travel Time</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="travel_time" placeholder="Travel Time" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
                 </div>
 
                 {/* Form Row */}
                 <div className="md:flex space-y-4 md:space-y-0">
                     <div className="form-control md:w-1/2">
-                        <Input label="Short Description" name="description" />
+                        <label className="label">
+                            <span className="label-text text-base">Short Description</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="description" placeholder="Short Description" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
 
                     <div className="form-control md:w-1/2 md:ml-4">
-                        <Input label="Total Visitor Per Year" name="total_visitor" />
+                        <label className="label">
+                            <span className="label-text text-base">Total Visitor Per Year</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="total_visitor" placeholder="Total Visitor Per Year" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
                 </div>
 
                 {/* Form Row */}
                 <div className="space-y-4 md:space-y-0" >
                     <div className="form-control w-full">
-                        <Input label="Photo URL" name="photo" />
+                        <label className="label">
+                            <span className="label-text text-base">Photo URL</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
                     </div>
                 </div>
 
