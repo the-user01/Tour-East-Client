@@ -6,8 +6,8 @@ const AddSpots = () => {
 
     const typeWriterArray = ["Place You visited", "Place You want to visit", "Place You recommened to visit"];
 
-    const {user} = useContext(AuthContext);
-    
+    const { user, loader } = useContext(AuthContext);
+
     const handleAddSpots = e => {
         e.preventDefault();
         const form = e.target;
@@ -44,127 +44,132 @@ const AddSpots = () => {
                 </div>
             </div>
 
-            <form className="space-y-4 mt-6" onSubmit={handleAddSpots}>
-                {/* Form Row */}
-                <div className="md:flex space-y-4 md:space-y-0">
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text text-base">Spot Name</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="spot_name" placeholder="Spot Name" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
+            {
+                loader ? <div className='mt-6 w-full text-center'><span className="loading loading-dots loading-lg"></span></div> :
 
-                    <div className=" md:w-1/2 md:ml-4">
-                        <label className="label">
-                            <span className="label-text text-base">Country Name</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="country_name" placeholder="Country Name" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
-                </div>
+                    <form className="space-y-4 mt-6" onSubmit={handleAddSpots}>
+                        {/* Form Row */}
+                        <div className="md:flex space-y-4 md:space-y-0">
+                            <div className="form-control md:w-1/2">
+                                <label className="label">
+                                    <span className="label-text text-base">Spot Name</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="spot_name" placeholder="Spot Name" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
 
-                {/* Form Row */}
-                <div className="md:flex space-y-4 md:space-y-0">
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text text-base">Location</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="location" placeholder="Location" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
+                            <div className=" md:w-1/2 md:ml-4">
+                                <select className="select border-blue-300 w-full" defaultValue="Selece">
+                                    <option></option>
+                                    <option>Game of Thrones</option>
+                                    <option>Lost</option>
+                                    <option>Breaking Bad</option>
+                                    <option>Walking Dead</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div className="form-control md:w-1/2 md:ml-4">
-                        <label className="label">
-                            <span className="label-text text-base">Average Cost</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="average_cost" placeholder="Average Cost" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
-                </div>
+                        {/* Form Row */}
+                        <div className="md:flex space-y-4 md:space-y-0">
+                            <div className="form-control md:w-1/2">
+                                <label className="label">
+                                    <span className="label-text text-base">Location</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="location" placeholder="Location" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
 
-                {/* Form Row */}
-                <div className="md:flex space-y-4 md:space-y-0">
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text text-base">Seasonality</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="seasonality" placeholder="Seasonality" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
+                            <div className="form-control md:w-1/2 md:ml-4">
+                                <label className="label">
+                                    <span className="label-text text-base">Average Cost</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="average_cost" placeholder="Average Cost" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
+                        </div>
 
-                    <div className="form-control md:w-1/2 md:ml-4">
-                        <label className="label">
-                            <span className="label-text text-base">Travel Time</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="travel_time" placeholder="Travel Time" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
-                </div>
+                        {/* Form Row */}
+                        <div className="md:flex space-y-4 md:space-y-0">
+                            <div className="form-control md:w-1/2">
+                                <label className="label">
+                                    <span className="label-text text-base">Seasonality</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="seasonality" placeholder="Seasonality" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
 
-                {/* Form Row */}
-                <div className="md:flex space-y-4 md:space-y-0">
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text text-base">Short Description</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="description" placeholder="Short Description" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
+                            <div className="form-control md:w-1/2 md:ml-4">
+                                <label className="label">
+                                    <span className="label-text text-base">Travel Time</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="travel_time" placeholder="Travel Time" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
+                        </div>
 
-                    <div className="form-control md:w-1/2 md:ml-4">
-                        <label className="label">
-                            <span className="label-text text-base">Total Visitor Per Year</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="total_visitor" placeholder="Total Visitor Per Year" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
-                </div>
+                        {/* Form Row */}
+                        <div className="md:flex space-y-4 md:space-y-0">
+                            <div className="form-control md:w-1/2">
+                                <label className="label">
+                                    <span className="label-text text-base">Short Description</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="description" placeholder="Short Description" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
 
-                {/* Form Row */}
-                <div className="space-y-4 md:space-y-0" >
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text text-base">Photo URL</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
-                </div>
+                            <div className="form-control md:w-1/2 md:ml-4">
+                                <label className="label">
+                                    <span className="label-text text-base">Total Visitor Per Year</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="total_visitor" placeholder="Total Visitor Per Year" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
+                        </div>
 
-                {/* Form Row */}
-                <div className="md:flex space-y-4 md:space-y-0">
-                    <div className="form-control md:w-1/2">
-                        <label className="label">
-                            <span className="label-text text-base">User Email</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="email" defaultValue={user.email} placeholder="User Email" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
+                        {/* Form Row */}
+                        <div className="space-y-4 md:space-y-0" >
+                            <div className="form-control w-full">
+                                <label className="label">
+                                    <span className="label-text text-base">Photo URL</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
+                        </div>
 
-                    <div className="form-control md:w-1/2 md:ml-4">
-                        <label className="label">
-                            <span className="label-text text-base">User Name</span>
-                        </label>
-                        <label className="input-group ">
-                            <input type="text" name="name" defaultValue={user.displayName} placeholder="User Name" className="input input-bordered w-full border-2 border-blue-300" />
-                        </label>
-                    </div>
-                </div>
+                        {/* Form Row */}
+                        <div className="md:flex space-y-4 md:space-y-0">
+                            <div className="form-control md:w-1/2">
+                                <label className="label">
+                                    <span className="label-text text-base">User Email</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="email" defaultValue={user.email} placeholder="User Email" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
 
-                <input type="submit" value="Add Spot" className="btn btn-block bg-primary text-white" />
+                            <div className="form-control md:w-1/2 md:ml-4">
+                                <label className="label">
+                                    <span className="label-text text-base">User Name</span>
+                                </label>
+                                <label className="input-group ">
+                                    <input type="text" name="name" defaultValue={user.displayName} placeholder="User Name" className="input input-bordered w-full border-2 border-blue-300" />
+                                </label>
+                            </div>
+                        </div>
 
-            </form>
+                        <input type="submit" value="Add Spot" className="btn btn-block bg-primary text-white" />
+
+                    </form>
+            }
 
         </div>
     );
