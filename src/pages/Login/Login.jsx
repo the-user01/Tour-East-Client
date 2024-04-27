@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Swal from "sweetalert2";
 
 
-
 const Login = () => {
 
     const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
@@ -31,6 +30,7 @@ const Login = () => {
         signIn(email, password)
 
             .then(() => {
+
                 Swal.fire({
                     icon: "success",
                     title: "Success",
@@ -49,6 +49,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(() => {
+
                 Swal.fire({
                     icon: "success",
                     title: "Success",

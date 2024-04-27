@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { Typewriter } from 'react-simple-typewriter'
+import { AuthContext } from '../../provider/AuthProvider';
 
 const AddSpots = () => {
 
     const typeWriterArray = ["Place You visited", "Place You want to visit", "Place You recommened to visit"];
 
+    const {user} = useContext(AuthContext);
+    
     const handleAddSpots = e => {
         e.preventDefault();
         const form = e.target;
@@ -17,8 +21,10 @@ const AddSpots = () => {
         const description = form.description.value;
         const total_visitor = form.total_visitor.value;
         const photo = form.photo.value;
+        const email = form.email.value;
+        const name = form.name.value;
 
-        const tour_spot = { spot_name, country_name, location, average_cost, seasonality, travel_time, description, total_visitor, photo };
+        const tour_spot = { spot_name, country_name, location, average_cost, seasonality, travel_time, description, total_visitor, photo, email, name };
 
         console.log(tour_spot);
 
@@ -34,7 +40,7 @@ const AddSpots = () => {
 
                 </div>
                 <div className="text-sm md:text-lg font-bold text-green-600 w-28 md:w-72 h-5">
-                    <Typewriter words={typeWriterArray} loop={true} cursor={true}/>
+                    <Typewriter words={typeWriterArray} loop={true} cursor={true} />
                 </div>
             </div>
 
@@ -131,6 +137,27 @@ const AddSpots = () => {
                         </label>
                         <label className="input-group ">
                             <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
+                    </div>
+                </div>
+
+                {/* Form Row */}
+                <div className="md:flex space-y-4 md:space-y-0">
+                    <div className="form-control md:w-1/2">
+                        <label className="label">
+                            <span className="label-text text-base">User Email</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="email" defaultValue={user.email} placeholder="User Email" className="input input-bordered w-full border-2 border-blue-300" />
+                        </label>
+                    </div>
+
+                    <div className="form-control md:w-1/2 md:ml-4">
+                        <label className="label">
+                            <span className="label-text text-base">User Name</span>
+                        </label>
+                        <label className="input-group ">
+                            <input type="text" name="name" defaultValue={user.displayName} placeholder="User Name" className="input input-bordered w-full border-2 border-blue-300" />
                         </label>
                     </div>
                 </div>

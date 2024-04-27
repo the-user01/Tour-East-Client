@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
-import { GoogleAuthProvider, GithubAuthProvider  } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 export const AuthContext = createContext(null)
 
@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
     }
 
     /* *** User Login *****/
-    const signIn = (email, password) =>{
+    const signIn = (email, password) => {
         setLoader(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
     /* *******  Google Sign In ********  */
     const googleProvider = new GoogleAuthProvider();
 
-    const googleSignIn = () =>{
+    const googleSignIn = () => {
         setLoader(true);
         return signInWithPopup(auth, googleProvider)
     }
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
     /* **** Github Sign In */
     const githubProvider = new GithubAuthProvider();
 
-    const githubSignIn = () =>{
+    const githubSignIn = () => {
         setLoader(true);
         return signInWithPopup(auth, githubProvider)
     }
@@ -43,15 +43,15 @@ const AuthProvider = ({ children }) => {
 
     /* *** User Profile Update **** */
 
-    const updateUser = (name, photoUrl) =>{
+    const updateUser = (name, photoUrl) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL: photoUrl, 
+            photoURL: photoUrl,
         })
     }
 
     /* **** User Sign Out **** */
-    const logOut = () =>{
+    const logOut = () => {
         setLoader(true);
         return signOut(auth);
     }
@@ -59,17 +59,17 @@ const AuthProvider = ({ children }) => {
 
     /* *** Observing the user **** */
 
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, currentUser =>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             setLoader(false);
         })
 
-        return ()=>{
+        return () => {
             unSubscribe()
         }
 
-    } ,[])
+    }, [])
 
 
     const authInfo = {
@@ -80,7 +80,7 @@ const AuthProvider = ({ children }) => {
         googleSignIn,
         githubSignIn,
         updateUser,
-        logOut
+        logOut,
     }
 
     return (
