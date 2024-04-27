@@ -29,7 +29,7 @@ const AddSpots = () => {
         console.log(tour_spot);
 
 
-
+        form.reset();
     }
 
     return (
