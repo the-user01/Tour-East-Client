@@ -1,5 +1,5 @@
 const getStoredValue = () =>{
-    const storedData = localStorage.getItem('books') ;
+    const storedData = localStorage.getItem('spots') ;
     if(storedData){
         return JSON.parse(storedData);
     }
@@ -14,7 +14,7 @@ const setStorage = spotId =>{
     if(!valueExists){
         storedData.push(spotId);
 
-        localStorage.setItem('books', JSON.stringify(storedData))
+        localStorage.setItem('spots', JSON.stringify(storedData))
     }
 }
 
