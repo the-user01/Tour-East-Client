@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import AllSpots from "../pages/Home/AllSpots";
 import AddSpots from "../pages/Home/AddSpots";
+import MyLists from "../pages/Home/MyLists";
 
 
   const router = createBrowserRouter([
@@ -27,6 +28,10 @@ import AddSpots from "../pages/Home/AddSpots";
             {
                 path:'/addSpots',
                 element: <AddSpots></AddSpots>,
+            },
+            {
+                path:'/myLists',
+                element: <MyLists></MyLists>,
             },
             
             {
