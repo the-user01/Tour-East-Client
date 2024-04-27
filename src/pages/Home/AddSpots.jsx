@@ -49,7 +49,7 @@ const AddSpots = () => {
 
                     <form className="space-y-4 mt-6" onSubmit={handleAddSpots}>
                         {/* Form Row */}
-                        <div className="md:flex space-y-4 md:space-y-0">
+                        <div className="md:flex items-center space-y-4 md:space-y-0">
                             <div className="form-control md:w-1/2">
                                 <label className="label">
                                     <span className="label-text text-base">Spot Name</span>
@@ -60,12 +60,17 @@ const AddSpots = () => {
                             </div>
 
                             <div className=" md:w-1/2 md:ml-4">
-                                <select className="select border-blue-300 w-full" defaultValue="Selece">
+                                <label className="label">
+                                    <span className="label-text text-base">Country Name</span>
+                                </label>
+                                <select className="select border-2 border-blue-300 w-full" name='country_name'>
                                     <option></option>
-                                    <option>Game of Thrones</option>
-                                    <option>Lost</option>
-                                    <option>Breaking Bad</option>
-                                    <option>Walking Dead</option>
+                                    <option>Bangladesh</option>
+                                    <option>Thailand</option>
+                                    <option>Indonesia</option>
+                                    <option>Malaysia</option>
+                                    <option>Vietnam</option>
+                                    <option>Cambodia</option>
                                 </select>
                             </div>
                         </div>
@@ -97,9 +102,14 @@ const AddSpots = () => {
                                 <label className="label">
                                     <span className="label-text text-base">Seasonality</span>
                                 </label>
-                                <label className="input-group ">
-                                    <input type="text" name="seasonality" placeholder="Seasonality" className="input input-bordered w-full border-2 border-blue-300" />
-                                </label>
+                                <select className="select border-2 border-blue-300 w-full" name='seasonality'>
+                                    <option></option>
+                                    <option>Spring</option>
+                                    <option>Summer</option>
+                                    <option>Monsoon</option>
+                                    <option>Autumn</option>
+                                    <option>winter</option>
+                                </select>
                             </div>
 
                             <div className="form-control md:w-1/2 md:ml-4">
