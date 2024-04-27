@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import demoImg from '../../../assets/user.png';
 import 'react-tooltip/dist/react-tooltip.css'
@@ -41,9 +41,13 @@ const Navbar = () => {
         }
     </>
 
+    const navigate = useNavigate();
+
     const handleLogOut = () => {
         logOut()
             .catch(error => console.log(error))
+
+        navigate('/login')
     }
 
     return (
