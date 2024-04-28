@@ -1,14 +1,16 @@
-import { FaPen, FaRegTrashAlt } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import ShowLists from "./ShowLists";
+import { useLoaderData } from "react-router-dom";
 
 const MyLists = () => {
-    const loadedData = useLoaderData()
+    const loadedData = useLoaderData();
 
+    const [spots, setSpots] = useState(loadedData);
+    const [count, setCount] = useState(1);
 
-
-
-    let count = 1;
-
+    const handleCount = () =>{
+        setCount(prevCount => prevCount + 1);
+    }
 
     return (
         <div>
@@ -24,22 +26,19 @@ const MyLists = () => {
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {
-                            loadedData.map(data => <tr key={data._id} className="hover">
-                                <th>{count++}</th>
-                                <td>{data.spot_name}</td>
-                                <td>{data.location}, {data.country_name}</td>
 
-                                <td><Link to={`/updateSpot/${data._id}`}><button
-                                    className="btn btn-outline btn-primary">
-                                    <FaPen /> Update
-                                </button></Link></td>
-
-                                <td><button className="btn btn-outline btn-error"><FaRegTrashAlt />Delete</button></td>
-                            </tr>)
-                        }
-                    </tbody>
+                    {
+                        spots.map((spot, index) =>
+                            <ShowLists
+                                key={spot._id}
+                                spot={spot}
+                                spots={spots}
+                                setSpots={setSpots}
+                                count={count+index}
+                                handleCount={handleCount}
+                            ></ShowLists>
+                        )
+                    }
                 </table>
             </div>
         </div>

@@ -12,6 +12,7 @@ const UpdateSpot = () => {
     const loadedData = useLoaderData();
 
     const navigate = useNavigate();
+    
 
     const typeWriterArray = ['Update Spot Details', 'Add More Realistic Information', 'Be a guide', 'Be a Guard(ian)', 'Become an EYE']
 
@@ -45,12 +46,15 @@ const UpdateSpot = () => {
             body: JSON.stringify(update_tour_spot)
         })
             .then(res => res.json())
-            .then(() => {
-                Swal.fire({
-                    icon: "success",
-                    title: "Success",
-                    text: "Spot Updated Successfully",
-                });
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success!",
+                        text: "Spot Updated Successfully",
+                    });
+
+                }
             })
 
         navigate(`/myLists/email/${user.email}`)
