@@ -16,7 +16,7 @@ const SpotDetails = () => {
     return (
         <>
             <Helmet>
-                <title>Spot Details</title>
+                <title>Spot Details | {spot_name}</title>
             </Helmet>
 
             <div className="mt-6">
