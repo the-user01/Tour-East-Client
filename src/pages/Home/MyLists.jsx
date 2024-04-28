@@ -1,8 +1,12 @@
+import { useLoaderData } from "react-router-dom";
 
 const MyLists = () => {
+    const loadedData = useLoaderData()
+
+
     return (
         <div>
-            My Lists
+            {loadedData.length}
         </div>
     );
 };

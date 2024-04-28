@@ -33,8 +33,9 @@ import SpotDetails from "../pages/Home/SpotDetails";
                 element: <AddSpots></AddSpots>,
             },
             {
-                path:'/myLists',
+                path:'/myLists/email/:email',
                 element: <MyLists></MyLists>,
+                loader: ({params})=> fetch(`http://localhost:5000/allSpots/email/${params.email}`)
             },
             {
                 path:'/spotDetails/:id',
