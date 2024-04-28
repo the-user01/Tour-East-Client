@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import AllSpotsCard from "./AllSpotsCard";
 import { Helmet } from "react-helmet-async";
 import { Typewriter } from 'react-simple-typewriter'
+import { Fade } from "react-awesome-reveal";
 
 
 const AllSpots = () => {
@@ -31,9 +32,12 @@ const AllSpots = () => {
 
             <div className="w-full flex justify-center">
                 <div className=" mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {
-                        loadedSpots.map(spot => <AllSpotsCard key={spot._id} spot={spot}></AllSpotsCard>)
-                    }
+                    <Fade>
+                        {
+                            loadedSpots.map(spot => <AllSpotsCard key={spot._id} spot={spot}></AllSpotsCard>)
+                        }
+
+                    </Fade>
                 </div>
             </div>
         </div>
