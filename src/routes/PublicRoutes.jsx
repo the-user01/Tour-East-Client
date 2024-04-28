@@ -37,8 +37,9 @@ import SpotDetails from "../pages/Home/SpotDetails";
                 element: <MyLists></MyLists>,
             },
             {
-                path:'/spotDetails',
+                path:'/spotDetails/:id',
                 element: <PrivateRoutes> <SpotDetails></SpotDetails> </PrivateRoutes>,
+                loader: ({params})=> fetch(`http://localhost:5000/allSpots/${params.id}`)
             },
             
             {
