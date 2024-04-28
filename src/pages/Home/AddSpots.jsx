@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Typewriter } from 'react-simple-typewriter'
 import { AuthContext } from '../../provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const AddSpots = () => {
 
@@ -37,8 +38,12 @@ const AddSpots = () => {
             body: JSON.stringify(tour_spot)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Spot Added Successfully",
+                });
             })
 
         form.reset();
