@@ -11,6 +11,7 @@ import AddSpots from "../pages/Home/AddSpots";
 import MyLists from "../pages/Home/MyLists";
 import PrivateRoutes from "./PrivateRoutes";
 import SpotDetails from "../pages/Home/SpotDetails";
+import UpdateSpot from "../pages/Home/UpdateSpot";
 
 
   const router = createBrowserRouter([
@@ -35,11 +36,16 @@ import SpotDetails from "../pages/Home/SpotDetails";
             {
                 path:'/myLists/email/:email',
                 element: <MyLists></MyLists>,
-                loader: ({params})=> fetch(`http://localhost:5000/allSpots/email/${params.email}`)
+                loader: ({params})=> fetch(`http://localhost:5000/allSpots/email/${params.email}`),
             },
             {
                 path:'/spotDetails/:id',
                 element: <PrivateRoutes> <SpotDetails></SpotDetails> </PrivateRoutes>,
+                loader: ({params})=> fetch(`http://localhost:5000/allSpots/${params.id}`)
+            },
+            {
+                path:'/updateSpot/:id',
+                element: <UpdateSpot></UpdateSpot>,
                 loader: ({params})=> fetch(`http://localhost:5000/allSpots/${params.id}`)
             },
             

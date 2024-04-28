@@ -1,17 +1,26 @@
-import { useContext } from 'react';
-import { Typewriter } from 'react-simple-typewriter'
-import { AuthContext } from '../../provider/AuthProvider';
-import { Helmet } from 'react-helmet-async';
-import Swal from 'sweetalert2';
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import { Typewriter } from "react-simple-typewriter";
 
-const AddSpots = () => {
-
-    const typeWriterArray = ["Place You visited", "Place You want to visit", "Place You recommened to visit"];
+const UpdateSpot = () => {
 
     const { user, loader } = useContext(AuthContext);
 
-    const handleAddSpots = e => {
+    const loadedData = useLoaderData();
+
+    const navigate = useNavigate();
+
+    const typeWriterArray = ['Update Spot Details', 'Add More Realistic Information', 'Be a guide', 'Be a Guard(ian)', 'Become an EYE']
+
+    const { _id, spot_name, country_name, location, average_cost, seasonality, travel_time, description, total_visitor, photo } = loadedData;
+
+
+    const handleUpdateSpots = e => {
         e.preventDefault();
+
         const form = e.target;
 
         const spot_name = form.spot_name.value;
@@ -26,48 +35,42 @@ const AddSpots = () => {
         const email = form.email.value;
         const name = form.name.value;
 
-        const tour_spot = { spot_name, country_name, location, average_cost, seasonality, travel_time, description, total_visitor, photo, email, name };
+        const update_tour_spot = { spot_name, country_name, location, average_cost, seasonality, travel_time, description, total_visitor, photo, email, name };
 
-        fetch('http://localhost:5000/allSpots', {
-            method: 'POST',
+        fetch(`http://localhost:5000/allSpots/${_id}`, {
+            method: "PUT",
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(tour_spot)
+            body: JSON.stringify(update_tour_spot)
         })
             .then(res => res.json())
             .then(() => {
                 Swal.fire({
                     icon: "success",
                     title: "Success",
-                    text: "Spot Added Successfully",
+                    text: "Spot Updated Successfully",
                 });
             })
 
-        form.reset();
+        navigate(`/myLists/email/${user.email}`)
     }
+
+
 
     return (
         <>
             <Helmet>
-                <title>Add Tourist Spot </title>
+                <title>Update Spot</title>
             </Helmet>
-
-            <div className="bg-gray-100 mt-6 p-24">
-                <div className='flex items-center gap-8'>
-                    <div>
-                        <h2 className="w-44 lg:w-64 text-center text-xl md:text-3xl font-extrabold text-blue-950">Add Tourist Spot</h2>
-
-                    </div>
-                    <div className="text-sm md:text-lg font-bold text-green-600 w-28 md:w-72 h-5">
-                        <Typewriter words={typeWriterArray} loop={true} cursor={true} />
-                    </div>
-                </div>
-
+            <div className="text-center my-6">
+                <h2 className="text-2xl md:text-4xl"><Typewriter words={typeWriterArray} loop={true} cursor={true}></Typewriter></h2>
+            </div>
+            <div className="container mx-auto">
                 {
                     loader ? <div className='mt-6 w-full text-center'><span className="loading loading-dots loading-lg"></span></div> :
 
-                        <form className="space-y-4 mt-6" onSubmit={handleAddSpots}>
+                        <form className="space-y-4 mt-6" onSubmit={handleUpdateSpots}>
                             {/* Form Row */}
                             <div className="md:flex items-center space-y-4 md:space-y-0">
                                 <div className="form-control md:w-1/2">
@@ -75,7 +78,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Spot Name</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name="spot_name" placeholder="Spot Name" className="input input-bordered w-full border-2 border-blue-300" />
+                                        <input type="text" name="spot_name" defaultValue={spot_name} placeholder="Spot Name" className="input input-bordered w-full border-2 border-blue-300" />
                                     </label>
                                 </div>
 
@@ -84,7 +87,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Country Name</span>
                                     </label>
                                     <select className="select border-2 border-blue-300 w-full" name='country_name'>
-                                        <option></option>
+                                        <option>{country_name}</option>
                                         <option>Bangladesh</option>
                                         <option>Thailand</option>
                                         <option>Indonesia</option>
@@ -102,7 +105,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Location</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name="location" placeholder="Location" className="input input-bordered w-full border-2 border-blue-300" />
+                                        <input type="text" name="location" defaultValue={location} placeholder="Location" className="input input-bordered w-full border-2 border-blue-300" />
                                     </label>
                                 </div>
 
@@ -111,7 +114,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Average Cost</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name="average_cost" placeholder="Average Cost" className="input input-bordered w-full border-2 border-blue-300" />
+                                        <input type="text" name="average_cost" defaultValue={average_cost} placeholder="Average Cost" className="input input-bordered w-full border-2 border-blue-300" />
                                     </label>
                                 </div>
                             </div>
@@ -123,7 +126,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Seasonality</span>
                                     </label>
                                     <select className="select border-2 border-blue-300 w-full" name='seasonality'>
-                                        <option></option>
+                                        <option>{seasonality}</option>
                                         <option>Spring</option>
                                         <option>Summer</option>
                                         <option>Monsoon</option>
@@ -137,7 +140,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Travel Time</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name="travel_time" placeholder="Travel Time" className="input input-bordered w-full border-2 border-blue-300" />
+                                        <input type="text" name="travel_time" defaultValue={travel_time} placeholder="Travel Time" className="input input-bordered w-full border-2 border-blue-300" />
                                     </label>
                                 </div>
                             </div>
@@ -149,7 +152,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Short Description</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name="description" placeholder="Short Description" className="input input-bordered w-full border-2 border-blue-300" />
+                                        <input type="text" name="description" defaultValue={description} placeholder="Short Description" className="input input-bordered w-full border-2 border-blue-300" />
                                     </label>
                                 </div>
 
@@ -158,7 +161,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Total Visitor Per Year</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name="total_visitor" placeholder="Total Visitor Per Year" className="input input-bordered w-full border-2 border-blue-300" />
+                                        <input type="text" name="total_visitor" defaultValue={total_visitor} placeholder="Total Visitor Per Year" className="input input-bordered w-full border-2 border-blue-300" />
                                     </label>
                                 </div>
                             </div>
@@ -170,7 +173,7 @@ const AddSpots = () => {
                                         <span className="label-text text-base">Photo URL</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full border-2 border-blue-300" />
+                                        <input type="text" name="photo" defaultValue={photo} placeholder="Photo URL" className="input input-bordered w-full border-2 border-blue-300" />
                                     </label>
                                 </div>
                             </div>
@@ -186,7 +189,7 @@ const AddSpots = () => {
                                     </label>
                                 </div>
 
-                                <div className="form-control md:w-1/2 md:ml-4">
+                                <div className="form-control md:w-1/2 md:ml-4   ">
                                     <label className="label">
                                         <span className="label-text text-base">User Name</span>
                                     </label>
@@ -196,7 +199,7 @@ const AddSpots = () => {
                                 </div>
                             </div>
 
-                            <input type="submit" value="Add Spot" className="btn btn-block bg-primary text-white" />
+                            <input type="submit" value="Update Spot" className="btn btn-block bg-primary text-white" />
 
                         </form>
                 }
@@ -206,4 +209,4 @@ const AddSpots = () => {
     );
 };
 
-export default AddSpots;
+export default UpdateSpot;
