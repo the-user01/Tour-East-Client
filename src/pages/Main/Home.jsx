@@ -1,13 +1,22 @@
 import { Helmet } from "react-helmet-async";
+import ShowSpotCard from "./HomePages/ShowSpotCard";
+// import Banner from "./HomePages/Banner";
 
 const Home = () => {
     return (
-        <div>
+        <>
             <Helmet>
                 <title>Tour-East | Home</title>
             </Helmet>
-            This is Home
-        </div>
+            
+            {/* <div>
+                <Banner></Banner>
+            </div> */}
+
+            <div className="flex justify-center">
+               <ShowSpotCard></ShowSpotCard>
+            </div>
+        </>
     );
 };
 

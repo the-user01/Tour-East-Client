@@ -1,6 +1,6 @@
 import {
     createBrowserRouter,
-  } from "react-router-dom";
+} from "react-router-dom";
 import Root from "../layouts/Root";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoutes from "./PrivateRoutes";
@@ -11,44 +11,44 @@ import MyLists from "../pages/Main/MyLists";
 import SpotDetails from "../pages/Main/SpotDetails";
 import UpdateSpot from "../pages/Main/UpdateSpot";
 import Login from "../pages/Login/Login";
-import Register from "../pages/Register/Register";
+import Register from "../pages/Register/Register"
 
 
-  const router = createBrowserRouter([
+const router = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
-        errorElement: <ErrorPage></ErrorPage> ,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path:'/',
+                path: '/',
                 element: <Home></Home>,
             },
             {
-                path:'/allSpots',
+                path: '/allSpots',
                 element: <AllSpots></AllSpots>,
-                loader: ()=> fetch("http://localhost:5000/allSpots")
+                loader: () => fetch("http://localhost:5000/allSpots")
             },
             {
-                path:'/addSpots',
+                path: '/addSpots',
                 element: <AddSpots></AddSpots>,
             },
             {
-                path:'/myLists/email/:email',
+                path: '/myLists/email/:email',
                 element: <MyLists></MyLists>,
-                loader: ({params})=> fetch(`http://localhost:5000/allSpots/email/${params.email}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/allSpots/email/${params.email}`),
             },
             {
-                path:'/spotDetails/:id',
+                path: '/spotDetails/:id',
                 element: <PrivateRoutes> <SpotDetails></SpotDetails> </PrivateRoutes>,
-                loader: ({params})=> fetch(`http://localhost:5000/allSpots/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/allSpots/${params.id}`)
             },
             {
-                path:'/updateSpot/:id',
+                path: '/updateSpot/:id',
                 element: <UpdateSpot></UpdateSpot>,
-                loader: ({params})=> fetch(`http://localhost:5000/allSpots/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/allSpots/${params.id}`)
             },
-            
+
             {
                 path: '/login',
                 element: <Login></Login>
@@ -57,9 +57,11 @@ import Register from "../pages/Register/Register";
                 path: '/register',
                 element: <Register></Register>
             },
+
         ]
-    }
-  ])
+    },
+
+])
 
 
-  export default router;
+export default router;
