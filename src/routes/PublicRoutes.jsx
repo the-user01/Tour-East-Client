@@ -3,15 +3,15 @@ import {
   } from "react-router-dom";
 import Root from "../layouts/Root";
 import ErrorPage from "../pages/ErrorPage";
-import Home from "../pages/Home/Home";
+import PrivateRoutes from "./PrivateRoutes";
+import Home from "../pages/Main/Home";
+import AllSpots from "../pages/Main/AllSpots";
+import AddSpots from "../pages/Main/AddSpots";
+import MyLists from "../pages/Main/MyLists";
+import SpotDetails from "../pages/Main/SpotDetails";
+import UpdateSpot from "../pages/Main/UpdateSpot";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import AllSpots from "../pages/Home/AllSpots";
-import AddSpots from "../pages/Home/AddSpots";
-import MyLists from "../pages/Home/MyLists";
-import PrivateRoutes from "./PrivateRoutes";
-import SpotDetails from "../pages/Home/SpotDetails";
-import UpdateSpot from "../pages/Home/UpdateSpot";
 
 
   const router = createBrowserRouter([
