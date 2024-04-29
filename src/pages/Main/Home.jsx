@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import ShowSpotCard from "./HomePages/ShowSpotCard";
+import ShowCountry from "./HomePages/ShowCountry";
 // import Banner from "./HomePages/Banner";
 
 const Home = () => {
@@ -16,6 +17,12 @@ const Home = () => {
             <div className="flex justify-center">
                <ShowSpotCard></ShowSpotCard>
             </div>
+
+            <div className="flex justify-center">
+               <ShowCountry></ShowCountry>
+            </div>
+
+
         </>
     );
 };
