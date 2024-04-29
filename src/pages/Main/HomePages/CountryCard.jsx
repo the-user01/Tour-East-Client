@@ -8,9 +8,9 @@ const CountryCard = ({ country }) => {
 
     return (
         <>
-            <Link to={`/allCountries/name/${name}`}>
+            <Link to={`/countrySpot/name/${name}`}>
                 <div className="card w-96 bg-gray-100 shadow-xl">
-                    <figure><img src={image} alt={name} /></figure>
+                    <figure><img src={image} alt={name} className='pt-6'/></figure>
                     <div className="card-body text-blue-950 ">
                         <h2 className="card-title ">{name}</h2>
                         <p>{description}</p>
