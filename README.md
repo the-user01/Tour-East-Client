@@ -12,5 +12,5 @@ Selected Category
 
 Package Used
 - React-simple-typewriter
-- React-swesome-reveal
+- React-awesome-reveal
 - React-tooltip
