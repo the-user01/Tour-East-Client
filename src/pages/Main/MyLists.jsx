@@ -6,11 +6,7 @@ const MyLists = () => {
     const loadedData = useLoaderData();
 
     const [spots, setSpots] = useState(loadedData);
-    const [count, setCount] = useState(1);
-
-    const handleCount = () =>{
-        setCount(prevCount => prevCount + 1);
-    }
+    const count = 1;
 
     return (
         <div>
@@ -35,7 +31,6 @@ const MyLists = () => {
                                 spots={spots}
                                 setSpots={setSpots}
                                 count={count+index}
-                                handleCount={handleCount}
                             ></ShowLists>
                         )
                     }

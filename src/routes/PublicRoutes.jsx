@@ -12,7 +12,7 @@ import SpotDetails from "../pages/Main/SpotDetails";
 import UpdateSpot from "../pages/Main/UpdateSpot";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register"
-import CountryCard from "../pages/Main/HomePages/CountryCard";
+import CountrySpot from "../pages/Main/HomePages/CountrySpot";
 
 
 const router = createBrowserRouter([
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/countrySpot/name/:name',
-                element: <CountryCard></CountryCard>,
+                element: <CountrySpot></CountrySpot>,
                 loader: ({ params }) => fetch(`http://localhost:5000/allCountries/name/${params.name}`)
             },
 
