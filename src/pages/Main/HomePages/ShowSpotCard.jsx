@@ -7,7 +7,7 @@ const ShowSpotCard = () => {
     const [newdata, setNewData] = useState([]);
 
     useEffect(() => {
-        fetch(" https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allSpots")
+        fetch(" https://tourism-management-server-psi.vercel.app/allSpots")
             .then(res => res.json())
             .then(data => {
                 if (data.length > 6) {

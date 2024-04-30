@@ -1,5 +1,5 @@
 # Tour-East
-## Liver link: https://tourism-management-471ac.web.app/
+## Live link: https://tourism-management-471ac.web.app/
 
 - Users can see Tourists Spots of South Asia
 - Users can Register and login to the site
