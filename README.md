@@ -1,8 +1,16 @@
-# React + Vite
+# Tour-East
+## Liver link: https://tourism-management-471ac.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Users can see Tourists Spots of South Asia
+- Users can Register and login to the site
+- Users can add Tourist spots with detailed information
+- Users can view spots those are added by them
+- Users can Update or delete spots which are added by them
 
-Currently, two official plugins are available:
+Selected Category
+- B9 A10 Type-01 Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Package Used
+- React-simple-typewriter
+- React-swesome-reveal
+- React-tooltip
