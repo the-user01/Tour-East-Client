@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import ShowSpotCard from "./HomePages/ShowSpotCard";
 import ShowCountry from "./HomePages/ShowCountry";
-// import Banner from "./HomePages/Banner";
+import Banner from "./HomePages/Banner";
 
 const Home = () => {
     return (
@@ -10,9 +10,9 @@ const Home = () => {
                 <title>Tour-East | Home</title>
             </Helmet>
             
-            {/* <div>
+            <div>
                 <Banner></Banner>
-            </div> */}
+            </div>
 
             <div className="flex justify-center">
                <ShowSpotCard></ShowSpotCard>

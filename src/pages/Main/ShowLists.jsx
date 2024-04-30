@@ -20,7 +20,7 @@ const ShowLists = (params) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/allSpots/${_id}`, {
+                fetch(` https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allSpots/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

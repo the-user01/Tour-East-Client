@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             {
                 path: '/allSpots',
                 element: <AllSpots></AllSpots>,
-                loader: () => fetch("http://localhost:5000/allSpots")
+                loader: () => fetch("https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allSpots")
             },
             {
                 path: '/addSpots',
@@ -37,22 +37,22 @@ const router = createBrowserRouter([
             {
                 path: '/myLists/email/:email',
                 element: <MyLists></MyLists>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allSpots/email/${params.email}`),
+                loader: ({ params }) => fetch(` https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allSpots/email/${params.email}`),
             },
             {
                 path: '/spotDetails/:id',
                 element: <PrivateRoutes> <SpotDetails></SpotDetails> </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allSpots/${params.id}`)
+                loader: ({ params }) => fetch(` https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allSpots/${params.id}`)
             },
             {
                 path: '/updateSpot/:id',
                 element: <UpdateSpot></UpdateSpot>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allSpots/${params.id}`)
+                loader: ({ params }) => fetch(` https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allSpots/${params.id}`)
             },
             {
                 path: '/countrySpot/name/:name',
                 element: <CountrySpot></CountrySpot>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allCountries/name/${params.name}`)
+                loader: ({ params }) => fetch(` https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allCountries/name/${params.name}`)
             },
 
             {

@@ -9,7 +9,7 @@ const ShowCountry = () => {
     const [newdata, setNewData] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/allCountries")
+        fetch(" https://tourism-management-server-n8h0y9nn7-theuser01s-projects.vercel.app/allCountries")
             .then(res => res.json())
             .then(data => setNewData(data))
     }, [])
